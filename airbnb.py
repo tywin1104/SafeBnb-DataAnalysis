@@ -11,11 +11,13 @@ class Airbnb:
             "Robbery": 1.5,
             "Auto Theft": 0.1
     }
+    HOMICIDE_WEIGHT = 1000
+
     MCIS =(
         [
             'Break and Enter', 'Assault',
             'Theft Over', 'Robbery',
-            'Auto Theft']
+            'Auto Theft', 'Homicide']
     )
 
     def __init__(self, _lat, _long):
@@ -27,6 +29,21 @@ class Airbnb:
         for mic in self.MCIS:
             self.crimes_count[mic] = 0
 
+        # Check Againest Homicide data
+        with open('Homicide.csv', 'r') as fh:
+            reader = csv.DictReader(fh)
+            for row in reader:
+                homicide_lat = row.get('Lat')
+                homicide_long = row.get('Long')
+
+                homicide_location = (homicide_lat, homicide_long)
+                dist = distance(self.location, homicide_location)
+
+                if dist < 1:
+                    self.crimes_count['Homicide'] += 1
+                    self.danger_index += self.HOMICIDE_WEIGHT
+
+        # Check Againest Major Crime Index Category
         with open('MCI_2014_to_2017.csv', 'r') as fh:
             reader = csv.DictReader(fh)
             for row in reader:

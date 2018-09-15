@@ -8,7 +8,7 @@ with open('output.json', 'r') as fh:
     listings = json.loads(raw)
 
     result = []
-    for listing in listings[:10]:
+    for listing in listings:
         pic_url = listing.get('XL Picture Url')
         if not pic_url:
             print('No pic url, skip')
