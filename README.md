@@ -5,7 +5,7 @@ Toronto Police Deparment crimes dataset.
 
 The goal is to map crimes occurances near different airbnb listings, quantifing those corelations as "safety index" to determine the safety level of that specific airbnb and serve as the model for the project.
 
-#Abnout SafeBnB
+# Abnout SafeBnB
 
 The web app shows Airbnb listings for areas searched for by the user and presents them in decreasing order based on a safety index. The safety index was determined by analyzing publicly available crime data for Toronto over an extended time period and the presence of certain keywords like "safe, quiet, scary" in reviews that indicated safety or lack of safety in the Airbnb's area.
 
